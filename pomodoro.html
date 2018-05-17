@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<body>
+	<div id="app" class="container">
+		<h1>Pomodoro Timer in VueJs</h1>
+		<h2>
+			<span>Pomodoro</span>
+			<button :disabled="state==='started'" @click="start">
+				<i class="glyphicon glyphicon-play"></i>
+			</button>
+			<button :disabled="state!=='started'" @click="pause()">
+				<i class="glyphicon glyphicon-pause"></i>
+			</button>
+			<button :disabled="state!=='started' && state !== 'paused'" @click="stop()">
+				<i class="glyphicon glyphicon-stop"></i>
+			</button>
+			<br>
+			<br>
+			<button :disabled="state!=='stopped'" @click="toggleState()">
+        <span>Change state</span><br>
+        <span>You are now in {{ pomodoroState }}</span>
+			</button>
+			<br>
+			<br>
+
+			<div v-if="pomodoroState != 'work'" class="image">
+				<div class="text-center">Now check out some random animal pic when you are resting!</div>
+				<br>
+        <img class="center-block" style="width:50%;margin:0 auto" src="http://thecatapi.com/api/images/get" alt="">
+        <div class="text-center"><a href="http://thecatapi.com/">source_url</a></div>
+			</div>
+			<h3>{{ title }}</h3>
+			<div class="well center-block">
+				<div class="pomodoro-timer">
+					<span>{{ min }}</span>:
+					<span>{{ sec }}</span>
+				</div>
+			</div>
+
+		</h2>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
+	<script type="text/javascript" src="./pomodoro.js"></script>
+</body>
